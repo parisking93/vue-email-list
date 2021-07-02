@@ -9,11 +9,13 @@ const app = new Vue(
         mounted() {
             for(let i = 0; i < 10; i++) {
                 axios
-                .get('https://flynn.boolean.careers/exercises/api/random/mail')
-                .then(element => {
-                    this.arrayEmail.push(element.data.response);
-                    console.log(element.data.response);
-                });   
+                    .get('https://flynn.boolean.careers/exercises/api/random/mail')
+                    .then(element => {
+                        this.arrayEmail.push(element.data.response);
+                    })
+                    .catch(error => {
+                        console.log(error +' Impossibile pushare l\'elemento');
+                    });   
             }
 
         }
